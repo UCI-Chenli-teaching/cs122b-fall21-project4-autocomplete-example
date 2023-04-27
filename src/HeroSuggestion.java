@@ -1,21 +1,15 @@
-
 import java.io.IOException;
 import java.util.HashMap;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-// server endpoint URL
 @WebServlet("/hero-suggestion")
 public class HeroSuggestion extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
 	/*
 	 * populate the Super hero hash map.
 	 * Key is hero ID. Value is hero name.
@@ -43,7 +37,6 @@ public class HeroSuggestion extends HttpServlet {
 		superHeroMap.put(18, "Daredevil");
 		superHeroMap.put(19, "Captain America");
 		superHeroMap.put(20, "Spider-Man");
-
 		superHeroMap.put(101, "Superman");
 		superHeroMap.put(102, "Batman");
 		superHeroMap.put(103, "Wonder Woman");
@@ -62,10 +55,6 @@ public class HeroSuggestion extends HttpServlet {
 		superHeroMap.put(116, "Cyborg");
 		superHeroMap.put(117, "Robin");
 	}
-    
-    public HeroSuggestion() {
-        super();
-    }
 
     /*
      * 
@@ -111,9 +100,7 @@ public class HeroSuggestion extends HttpServlet {
 					jsonArray.add(generateJsonObject(id, heroName));
 				}
 			}
-			
 			response.getWriter().write(jsonArray.toString());
-			return;
 		} catch (Exception e) {
 			System.out.println(e);
 			response.sendError(500, e.getMessage());
